@@ -11,4 +11,18 @@ body
 button
 {
 	font-size: 2em;
+	margin:5%;
 }
+
+#game 
+{
+	display:none;
+}
+
+table
+{
+	border-style:solid;
+	border-color:#555555;
+	border-width:20px;
+}
+
