@@ -1,17 +1,28 @@
 body
 {
 	text-align:center;
+	font-family: "Arial", sans-serif;
 }
+
+label
+{
+	font-size:2em;
+}
+
 .center
 {
 	display:flex;
 	justify-content:center;
 }
 
+.scoreboard
+{
+}
 button
 {
 	font-size: 2em;
-	margin:5%;
+	font-weight: bold;
+	margin: 2%;
 }
 
 #game 
@@ -26,3 +37,18 @@ table
 	border-width:20px;
 }
 
+input
+{
+	margin:2%;
+	font-size:1em;
+}
+
+h1
+{
+	font-size:2em;
+}
+
+h2
+{
+	font-size:1.5em;
+}

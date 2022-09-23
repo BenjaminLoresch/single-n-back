@@ -1,5 +1,5 @@
 var n= 2; //Number of squares back to check for match.
-var displayTime = 2000; //Time to display each square.
+var displayTime = 3000; //Time to display each square.
 var currentIndex; //To hold the currently selected square index.
 var matchGuessed=false; //Whether user recently guessed a match.
 
@@ -38,9 +38,10 @@ function gameLoop()
 		lastTime=Date.now(); //Update time.
 		
 		//Check if match was not guessed when it should have been.
-		if(!matchGuessed && numberList.length>(n+1) && currentIndex==numberList[(numberList.length-1-n)]) 
+		if(!matchGuessed && numberList.length>(n+1) && currentIndex==numberList[numberList.length-1-n]) 
 		{
 			console.log("Wrong.");
+			addLoss();
 			flashBorderColor("#AA5555");
 		}
 		
@@ -87,8 +88,10 @@ function updateSquares()
 function startGame()
 {
 	console.log("Starting game.");
+	n = parseInt(document.getElementById("nInput").value);
+	console.log("n = " + n);
 	//Make game visible and start loop.
-	document.getElementById("startGameButton").style.display="none";
+	document.getElementById("startSection").style.display="none";
 	document.getElementById("game").style.display="block"; 
 	gameLoop();
 }
@@ -98,15 +101,17 @@ function clickedMatch()
 {
 	var back = numberList[(numberList.length-1-n)]; //Previous index for comparison.
 	var table = document.getElementById("mainTable");
-	if(numberList.length > (n+1) &&currentIndex==back)
+	if(numberList.length > (n+1) && currentIndex==numberList[numberList.length-1-n])
 	{
 		console.log("Correct");
+		addWin();
 		flashBorderColor("#55FF55");
 		
 	}
 	else
 	{
 		console.log("Wrong");
+		addLoss();
 		flashBorderColor("#AA5555");
 	}
 	matchGuessed=true;
@@ -131,4 +136,18 @@ function clearAndUpdate()
 		document.getElementById("square"+(i+1)).src="images/square.png";
 	}
 	setTimeout(updateSquares, 500);
+}
+
+//Add to win score.
+function addWin()
+{
+	var wins = document.getElementById("wins");
+	wins.innerHTML = parseInt(wins.innerHTML) + 1;
+}
+
+//Add to loss score.
+function addLoss()
+{
+	var losses = document.getElementById("losses");
+	losses.innerHTML = parseInt(losses.innerHTML) + 1;
 }

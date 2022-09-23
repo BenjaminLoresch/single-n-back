@@ -13,8 +13,17 @@
 			<br>
 		</div>
 		<button id="match" onclick="clickedMatch()">Match</button>
+		<div class="scoreboard">
+		<h2>Wins: <span id="wins">0</span><br>
+		    Losses:<span id="losses">0</span> </h2>
+		</div>
 	</div>
-	<button id="startGameButton" onclick="startGame()">Start Game</button>
+	<div id="startSection">
+		<label>N =<input type="number" id="nInput"></label>
+		<br>
+		<button id="startGameButton" onclick="startGame()">Start Game</button>
+		<a href="rules.html">How To Play</a>
+	</div>
 <script src="scripts/single-n-back.js"></script> 
 </body>
 </html>
