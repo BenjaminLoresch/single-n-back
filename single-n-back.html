@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="styles/game-style.css">
 </head>
 <body>	
+	<h1>N-Back Game</h1>
 	<div id="game">
 		<div class="center">
 			<table id="mainTable">
@@ -13,17 +14,19 @@
 			<br>
 		</div>
 		<button id="match" onclick="clickedMatch()">Match</button>
-		<div class="scoreboard">
-		<h2>Wins: <span id="wins">0</span><br>
-		    Losses:<span id="losses">0</span> </h2>
-		</div>
 	</div>
+	<div id="scoreboard">
+		<h2>Wins: <span id="wins">0</span><br>
+           	 Losses:<span id="losses">0</span> </h2>
+	</div>
+	
 	<div id="startSection">
-		<label>N =<input type="number" id="nInput"></label>
+		<label>n =<input type="number" id="nInput"></label>
 		<br>
 		<button id="startGameButton" onclick="startGame()">Start Game</button>
-		<a href="rules.html">How To Play</a>
+		<br>
 	</div>
+	<a href="rules.html" style="float:left; font-size:2em;">How To Play</a>
 <script src="scripts/single-n-back.js"></script> 
 </body>
 </html>

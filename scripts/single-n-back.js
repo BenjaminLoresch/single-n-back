@@ -37,6 +37,8 @@ function gameLoop()
 	{
 		lastTime=Date.now(); //Update time.
 		
+		
+		
 		//Check if match was not guessed when it should have been.
 		if(!matchGuessed && numberList.length>(n+1) && currentIndex==numberList[numberList.length-1-n]) 
 		{
@@ -62,6 +64,12 @@ function gameLoop()
 		numberList.push(currentIndex);
 		matchGuessed=false;
 		clearAndUpdate(); 
+		
+		//End game after 20 turns.
+		if(numberList.length>20) 
+		{
+			finishGame();
+		}
 	}
 	setTimeout(gameLoop, 250);
 }
@@ -93,12 +101,18 @@ function startGame()
 	//Make game visible and start loop.
 	document.getElementById("startSection").style.display="none";
 	document.getElementById("game").style.display="block"; 
+	document.getElementById("scoreboard").style.display="block";
 	gameLoop();
 }
 
 //Check if match for n-back.
 function clickedMatch()
 {
+	//If already guessed for this round, click is ignored.
+	if(matchGuessed==true)
+	{
+		return;
+	}
 	var back = numberList[(numberList.length-1-n)]; //Previous index for comparison.
 	var table = document.getElementById("mainTable");
 	if(numberList.length > (n+1) && currentIndex==numberList[numberList.length-1-n])
@@ -150,4 +164,10 @@ function addLoss()
 {
 	var losses = document.getElementById("losses");
 	losses.innerHTML = parseInt(losses.innerHTML) + 1;
+}
+
+//Finish game, display score only.
+function finishGame()
+{
+	document.getElementById("game").style.display="none";
 }

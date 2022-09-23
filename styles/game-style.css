@@ -15,9 +15,11 @@ label
 	justify-content:center;
 }
 
-.scoreboard
+#scoreboard
 {
+	display:none;
 }
+
 button
 {
 	font-size: 2em;
@@ -49,6 +51,11 @@ h1
 }
 
 h2
+{
+	font-size:1.5em;
+}
+
+p
 {
 	font-size:1.5em;
 }
