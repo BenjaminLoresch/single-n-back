@@ -38,7 +38,7 @@ function gameLoop()
 		lastTime=Date.now(); //Update time.
 		
 		//Check if match was not guessed when it should have been.
-		if(!matchGuessed && currentIndex==numberList[(numberList.length-1-n)]) 
+		if(!matchGuessed && numberList.length>(n+1) && currentIndex==numberList[(numberList.length-1-n)]) 
 		{
 			console.log("Wrong.");
 			flashBorderColor("#AA5555");
@@ -59,7 +59,8 @@ function gameLoop()
 			}
 		}
 		numberList.push(currentIndex);
-		updateSquares();
+		matchGuessed=false;
+		clearAndUpdate(); 
 	}
 	setTimeout(gameLoop, 250);
 }
@@ -97,7 +98,7 @@ function clickedMatch()
 {
 	var back = numberList[(numberList.length-1-n)]; //Previous index for comparison.
 	var table = document.getElementById("mainTable");
-	if(currentIndex==back)
+	if(numberList.length > (n+1) &&currentIndex==back)
 	{
 		console.log("Correct");
 		flashBorderColor("#55FF55");
@@ -120,4 +121,14 @@ function flashBorderColor(color)
 {
   	changeBorderColor(color);
   	setTimeout(function(){changeBorderColor("#555555")}, 1000);
+}
+
+//Clear all squares for a short time, then update squares.
+function clearAndUpdate()
+{
+	for(let i=0; i<9; i++)
+	{
+		document.getElementById("square"+(i+1)).src="images/square.png";
+	}
+	setTimeout(updateSquares, 500);
 }
