@@ -1,7 +1,10 @@
+//Benjamin Loresch
+//September 2022
 var n= 2; //Number of squares back to check for match.
-var displayTime = 3000; //Time to display each square.
+var displayTime = 2500; //Time to display each square.
 var currentIndex; //To hold the currently selected square index.
 var matchGuessed=false; //Whether user recently guessed a match.
+var chance = 0.25 //Approximate chance of a match being chosen.
 
 //Set up 9 squares in table.
 var table = document.getElementById("mainTable");
@@ -32,7 +35,7 @@ var numberList=[]; //Square index list. (For guesses.)
 //Recursive function acting as game loop. 
 function gameLoop()
 {
-	//If it has been 3 seconds, switch active square. 
+	//If displayTime has passed, switch active square. 
 	if(Date.now() - lastTime >= displayTime)
 	{
 		lastTime=Date.now(); //Update time.
@@ -47,8 +50,16 @@ function gameLoop()
 			flashBorderColor("#AA5555");
 		}
 		
+		
 		//Select random square.
 		currentIndex = Math.trunc(Math.random()*9);
+		
+		//Make chance of being  a match higher.
+		if((numberList.length>n+1) && Math.random() < chance)
+		{
+			currentIndex = numberList[numberList.length-n];
+		}
+		
 		for(let i=0; i<9; i++)
 		{
 			if(i==currentIndex)
