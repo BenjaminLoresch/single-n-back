@@ -4,7 +4,7 @@ var n= 2; //Number of squares back to check for match.
 var displayTime = 2500; //Time to display each square.
 var currentIndex; //To hold the currently selected square index.
 var matchGuessed=false; //Whether user recently guessed a match.
-var chance = 0.25 //Approximate chance of a match being chosen.
+var chance = 0.20 //Approximate chance of a match being chosen.
 
 //Set up 9 squares in table.
 var table = document.getElementById("mainTable");
@@ -108,7 +108,13 @@ function startGame()
 {
 	console.log("Starting game.");
 	n = parseInt(document.getElementById("nInput").value);
+	//If user didn't enter a valid number, make n=2.
+	if(Number.isNaN(n)) 
+	{
+		n=2;
+	}
 	console.log("n = " + n);
+	document.getElementById("showN").innerHTML = "n = "+n;
 	//Make game visible and start loop.
 	document.getElementById("startSection").style.display="none";
 	document.getElementById("game").style.display="block"; 

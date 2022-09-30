@@ -20,12 +20,7 @@ label
 	display:none;
 }
 
-button
-{
-	font-size: 2em;
-	font-weight: bold;
-	margin: 2%;
-}
+
 
 #game 
 {
@@ -59,3 +54,16 @@ p
 {
 	font-size:1.5em;
 }
+
+nav a:link, nav a:visited, button
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	text-decoration:none;
+	font-weight:bold;
+	padding:5px;
+	border-radius:10px;
+	font-size:2em;
+	margin:5px;
+}
+
